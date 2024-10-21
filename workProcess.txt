@@ -1,0 +1,32 @@
+
+step 1: 
+
+# go to --- > routes /web.php create new route for specific employee detils view
+
+
+Route::get('/employees/{emp_id}/details', [EmployeeController::class,'details'])->name('employees.details');
+
+
+
+# go to --- > controllers/EmployeeController create new class
+
+     // details route
+
+     public function details($emp_id){
+        $employee = Employee::find($emp_id);
+        return view("employess.details")->with("e",$employee);
+     }
+
+#  go to --- > views/employees/details.blade.php create new view 
+
+   struct data write html code 
+
+
+# when data amount increase needed command 
+
+php artisan migrate:rollback
+php artisan migrate
+php artisan db:seed
+
+# step 2: pagination go to Laravel : pagination bootstrap 
+# step 3: employee controllers write paginate(15) 
