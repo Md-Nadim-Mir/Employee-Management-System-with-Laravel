@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    //index route
+    
+  
+  //index route
      public function index(){
         // $employee = Employee::all();
         $e = Employee::paginate(10);
@@ -17,6 +19,8 @@ class EmployeeController extends Controller
      }
 
      
+
+
      //   new code 
      // details route
 
@@ -27,6 +31,22 @@ class EmployeeController extends Controller
         return view("employees.details")->with("e",$employee);
       
      }
+
+
+
+
+
+    //  create employee
+    public function create(){
+       return view("employees.create");
+    }
+
+    // store data
+    public function store(Request $request){
+      //  dd($request->all());
+      // Employee::create($request->all());
+      // return redirect()->route("employees.index");
+    }
 
 
 }

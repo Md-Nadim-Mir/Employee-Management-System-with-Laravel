@@ -4,6 +4,12 @@
     <legend style=" font-weight: bold; font-size: 32px;" class="text-center mt-5">All Employee Information
     </legend>
 
+    <div class="text-end">
+          <a href="{{ route('employees.create') }}">
+             <button class="btn btn-primary fw-bold">Add Employee</button>
+          </a>
+    </div>
+
     <div style="justify-items: center; margin-top:16px">
         <table class="table table-striped rounded-top" border="1" style="margin-bottom: 12px">
 
@@ -12,14 +18,14 @@
             <th  class=" p-2">Id</th>
             <th  class=" p-2">Name</th>
             <th class=" p-2">Title</th>
-            <th class=" p-2">Option</th>
+            <th class=" p-2">Others</th>
         </thead>
             @foreach ($emplyees as $e)
-                <tr>
+                <tr class="fw-bold">
                     <td style="padding-left: 5px; padding-right: 5px;">{{ $e->id }}</td>
                     <td style="padding-left: 5px; padding-right: 5px;">{{ $e->name }}</td>
                     <td style="padding-left: 5px; padding-right: 5px;">{{ $e->job_title }}</td>
-                    <td class="rounded-2" style="padding-left: 5px; padding-right: 5px;"><a href="{{ route('details', $e->id) }}"><button>View
+                    <td class="rounded-2" style="padding-left: 5px; padding-right: 5px;"><a href="{{ route('employees.details', $e->id) }}"><button class="btn btn-primary fw-bold">View
                                 Details</button></a></td>
                 </tr>
             @endforeach

@@ -30,3 +30,38 @@ php artisan db:seed
 
 # step 2: pagination go to Laravel : pagination bootstrap 
 # step 3: employee controllers write paginate(15) 
+
+
+
+
+step: 2  [crud operation]
+
+# button create index.blade.php for new employee add 
+ <div class="text-end">
+          <a href="{{ route('employees.create') }}">
+             <button class="btn btn-primary fw-bold">Add Employee</button>
+          </a>
+    </div>
+
+  # then controllers create new function for view  
+
+
+
+step:3 [post input data]
+
+// post route create  : web.php
+Route::post('/store', [EmployeeController::class,'store'])->name('employees.store');
+
+
+// controllers
+
+    // store data
+    public function store(Request $request){
+       dd($request->all());
+    }
+
+// from add :  
+<form action="submit.php" method="POST" action="{{route('emplyees.store')}}" class="fw-bold ">
+     {{ csrf_field() }}  
+
+

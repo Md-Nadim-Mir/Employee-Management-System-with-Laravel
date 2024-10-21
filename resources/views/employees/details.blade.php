@@ -5,7 +5,7 @@
 
    <legend style="margin-top: 20px; font-weight: bold; font-size: 32px;" class="text-center mt-5">Employee Details</legend>
    
-   <table class="table table-striped rounded-top" border="1" >
+   <table class="table table-striped rounded-top fw-bold" border="1" >
 
       <tr>
         <th>id</th>
@@ -48,7 +48,7 @@
       <button>Back to employees table</button>
   </a> --}}
   
-  <a href="{{ route('home', $e->id) }}"><button>
+  <a href="{{ route('home', $e->id) }}"><button class="btn btn-primary fw-bold">
     Go Back</button></a>
   
 
