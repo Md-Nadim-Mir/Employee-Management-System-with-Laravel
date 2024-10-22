@@ -44,8 +44,23 @@ class EmployeeController extends Controller
     // store data
     public function store(Request $request){
       //  dd($request->all());
-      // Employee::create($request->all());
-      // return redirect()->route("employees.index");
+
+      $validate_rule=[
+
+        "name"=> "required | max:255 | string",
+        "job_title"=> "required|max:100|string",
+        "joining_date"=> "required|date",
+        "salary"=> "required|numeric|min:0",
+        "email"=> "nullable|email|max:255",
+        "mobile_no"=> "required|string|size:11",
+        "address"=> "required|string",
+         
+      ];
+
+      $request->validate($validate_rule);
+
+      $e= Employee::create($request->all());
+      return redirect()->route("employees.details",$e->id);
     }
 
 
