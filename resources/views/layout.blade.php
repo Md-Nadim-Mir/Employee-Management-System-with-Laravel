@@ -12,9 +12,9 @@
       <div class="container">
         <a class="navbar-brand" href="http://127.0.0.1:8000/">Employee Management System</a>
  
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+          <form class="d-flex" role="search" method="GET" action="{{route('employees.search')}}">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+            <button class="btn btn-primary" type="submit">Search</button>
           </form>
           
         </div>

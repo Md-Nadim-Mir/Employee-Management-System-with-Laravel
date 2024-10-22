@@ -29,5 +29,14 @@ Route::get('/create', [EmployeeController::class,'create'])->name('employees.cre
 // post route create
 Route::post('/store', [EmployeeController::class,'store'])->name('employees.store');
 
-// post route create
+// post route create for update
+Route::get('/{emp_id}/update', [EmployeeController::class,'edit'])->name('employees.edit');
+
 Route::post('/{emp_id}/update', [EmployeeController::class,'update'])->name('employees.update');
+
+// delete route
+Route::delete('/{emp_id}/delete', [EmployeeController::class,'destroy'])->name('employees.delete');
+
+
+//  serachig 
+Route::get('/search', [EmployeeController::class,'search'])->name('employees.search');

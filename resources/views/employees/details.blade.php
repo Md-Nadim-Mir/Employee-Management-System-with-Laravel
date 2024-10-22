@@ -18,6 +18,11 @@
       </tr>
 
       <tr>
+        <th>Job Title</th>
+        <td style="padding-right: 20px;">{{$e-> job_title}}</td>
+      </tr>
+
+      <tr>
         <th>Joining Date</th>
         <td style="padding-right: 20px;">{{$e->joining_date}}</td>
       </tr>

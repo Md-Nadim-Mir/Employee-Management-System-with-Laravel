@@ -45,23 +45,83 @@ class EmployeeController extends Controller
     public function store(Request $request){
       //  dd($request->all());
 
-      $validate_rule=[
+      $validate_rules=[
 
-        "name"=> "required | max:255 | string",
+        "name"=> "required | string| max:255 ",
         "job_title"=> "required|max:100|string",
         "joining_date"=> "required|date",
         "salary"=> "required|numeric|min:0",
         "email"=> "nullable|email|max:255",
-        "mobile_no"=> "required|string|size:11",
+        "mobile_no"=> "required|string|max:30",
         "address"=> "required|string",
          
       ];
 
-      $request->validate($validate_rule);
+      $request->validate($validate_rules);
 
       $e= Employee::create($request->all());
       return redirect()->route("employees.details",$e->id);
     }
 
+
+    //  edit 
+     
+    public function edit($emp_id){
+
+       $e= Employee::find($emp_id);
+       return view('employees.update')->with('employee',$e);
+
+    }
+
+
+    //  update 
+    public function update(Request $request, $emp_id){
+
+
+      $validate_rules=[
+
+        "name"=> "required| string | max:255 ",
+        "job_title"=> "required|max:100|string",
+        "joining_date"=> "required|date",
+        "salary"=> "required|numeric|min:0",
+        "email"=> "nullable|email|max:255",
+        "mobile_no"=> "required|string|max:30",
+        "address"=> "required|string",
+         
+      ];
+
+      $request->validate($validate_rules);
+
+      $employee = Employee::find($emp_id);
+      $employee->update($request->all());
+      return redirect()->route("employees.details",$employee->id);
+
+
+    }
+
+
+
+    //  delete
+
+    public function destroy($emp_id){
+         $e= Employee::find($emp_id);
+
+         $e->delete();  
+
+         return redirect()->route("home");
+    }
+
+
+    //  search 
+    public function search(Request $request){
+      
+       $text='%' . $request->search .'%'; 
+       $es= Employee::where('name','LIKE', $text )
+                  //  ->orWhere('job_title','LIKE', $text )
+                   ->paginate(10);
+       
+       return view('employees.index')->with('emplyees',$es);             
+
+    }
 
 }
